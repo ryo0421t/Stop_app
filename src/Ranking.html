@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta name="robots" content="noindex" />
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>アプリランキング</title>
+    <link rel="icon" href="img/IMG_6459.png"/>
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
+    <link rel="stylesheet" href="css/ranking.css">
+</head>
+
+<body>
+    <div class="main-wrap">
+        <h1>ランキング</h1>
+
+        <!-- ランキング -->
+        <div class="rank">
+            <div class="number">１位: <span id="1st"></span>pt</div><br>
+            <div class="number">２位: <span id="2nd"></span>pt</div><br>
+            <div class="number">３位: <span id="3rd"></span>pt</div>
+        </div>
+
+        <div class="team">
+            <div class="number">チーム: <span id="team-point"></span>pt</div><br>
+        </div>
+        <div class="center">
+            <a href="https://it222103.web.app/src/map.html" id="return">戻る</a>
+        </div>
+    </div>
+
+    <script src="js/Ranking.js"></script>
+</body>
+
+</html>

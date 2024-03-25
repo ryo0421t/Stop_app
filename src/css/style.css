@@ -1,0 +1,633 @@
+@charset "utf-8";
+
+html {
+    font-size: 16px;
+}
+
+header {
+    color: white;
+    background-color: rgb(65, 65, 255);
+    height: 7rem;
+    width: 100%;
+}
+
+header p {
+    font-size: 1.6rem;
+    margin: 0;
+    font-weight: bold;
+    line-height: 4;
+}
+
+.flex {
+    display: flex;
+    max-width: 90%;
+    margin: auto;
+}
+
+.border-radius {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    line-height: 4rem;
+    background-color: white;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+}
+
+
+.img_wrap {
+    position: relative;
+}
+
+header img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2rem;
+    height: 2rem;
+}
+
+
+body {
+    margin: 0;
+}
+
+.main-img img {
+    border: none;
+    max-width: 100%;
+    height: auto;
+    padding: auto;
+    display: block;
+    margin: auto;
+}
+
+.list img {
+    border: none;
+    max-width: 100%;
+    height: auto;
+    padding: auto;
+    display: block;
+    margin: auto;
+}
+
+
+
+.section-white h2 {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: normal;
+    letter-spacing: 0.1rem;
+    margin-bottom: 2em;
+    color: rgb(107, 107, 107);
+    padding: 0rem 0.1875rem;
+}
+
+.section-blue h2 {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: normal;
+    letter-spacing: 0.1rem;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+h1 {
+    margin-left: auto;
+}
+
+h2 {
+    margin-top: 4.375rem;
+}
+
+h2 span {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    letter-spacing: 0.5rem;
+}
+
+.overview {
+    width: 90%;
+    margin: auto;
+}
+
+.overview h3 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin-bottom: 0.5rem;
+    border-bottom: 0.125rem solid rgb(107, 107, 107);
+}
+
+.overview p {
+    margin: 0;
+    line-height: 1.85rem;
+    font-size: 0.9rem;
+    margin-bottom: 2.5rem;
+}
+
+
+.sub-title h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: normal;
+    letter-spacing: 0.1rem;
+    margin-bottom: 2rem;
+    color: rgb(107, 107, 107);
+    padding: 0rem 0.1875rem;
+}
+
+.center{
+    text-align: center;
+}
+
+
+.section-blue {
+    background-color: rgb(65, 65, 255);
+    padding: 0.1875rem;
+}
+
+.list {
+    max-width: 90%;
+    margin: auto;
+}
+
+h4 {
+    margin: 1rem 0rem 0rem;
+    color: white;
+}
+
+.text p {
+    margin: 0;
+    color: white;
+}
+
+.text p {
+    font-size: 0.8rem;
+}
+
+
+.btn-back {
+    background-color: white;
+    padding: 0.625rem;
+}
+
+.btn-area {
+    background-color: rgb(0, 11, 214);
+}
+
+/*アコーディオンタイトル*/
+.btn {
+    margin-top: 1.1rem;
+    text-align: center;
+    color: white;
+    position: relative;
+    /*+マークの位置基準とするためrelative指定*/
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: normal;
+    padding: 3% 3%;
+    transition: all .5s ease;
+}
+
+/*アイコンの＋と×*/
+.btn::before,
+.btn::after {
+    position: absolute;
+    content: '';
+    width: 1rem;
+    height: 0.125rem;
+    background-color: white;
+
+}
+
+.btn::before {
+    top: 48%;
+    left: 1rem;
+    transform: rotate(0deg);
+
+}
+
+.btn::after {
+    top: 48%;
+    left: 1rem;
+    transform: rotate(90deg);
+
+}
+
+/*　closeというクラスがついたら形状変化　*/
+
+.btn.close::before {
+    transform: rotate(45deg);
+}
+
+.btn.close::after {
+    transform: rotate(-45deg);
+}
+
+/*アコーディオンで現れるエリア*/
+.box {
+    display: none;
+    /*はじめは非表示*/
+    margin: 3%;
+    padding: 3%;
+    /* border: 4px solid rgb(0, 11, 214); */
+
+}
+
+
+footer {
+    background-color: rgb(65, 65, 255);
+    padding: 1.25rem;
+    text-align: center;
+}
+
+/*リンクの形状*/
+#page-top a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(65, 65, 255, 0.8);
+    border-radius: 0.3125rem;
+    width: 3.125rem;
+    height: 3.125rem;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 0.6rem;
+    transition: all 0.3s;
+}
+
+#page-top a:hover {
+    background: rgb(0, 11, 214);
+}
+
+/*リンクを右下に固定*/
+#page-top {
+    position: fixed;
+    right: 0.625rem;
+    bottom: 0.625rem;
+    z-index: 2;
+    /*はじめは非表示*/
+    opacity: 0;
+    transform: translateY(1.66rem);
+}
+
+/*　上に上がる動き　*/
+
+#page-top.UpMove {
+    animation: UpAnime 0.5s forwards;
+}
+
+@keyframes UpAnime {
+    from {
+        opacity: 0;
+        transform: translateY(1.66rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*　下に下がる動き　*/
+
+#page-top.DownMove {
+    animation: DownAnime 0.5s forwards;
+}
+
+@keyframes DownAnime {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(6.66rem);
+    }
+}
+
+footer small {
+    font-size: 0.6rem;
+    color: white;
+
+}
+
+@media only screen and (min-width: 700px) {
+
+    html {
+        font-size: 30px;
+    }
+
+    header {
+        color: white;
+        background-color: rgb(65, 65, 255);
+        height: 7rem;
+        width: 100%;
+    }
+
+    header p {
+        font-size: 1.6rem;
+        margin: 0;
+        font-weight: bold;
+        line-height: 4;
+    }
+    .flex {
+        display: flex;
+        max-width: 90%;
+        margin: auto;
+    }
+
+    .border-radius {
+        display: block;
+        width: 4rem;
+        height: 4rem;
+        line-height: 4rem;
+        background-color: white;
+        border-radius: 50%;
+        color: #fff;
+        text-align: center;
+    }
+
+
+    .img_wrap {
+        position: relative;
+    }
+
+    header img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 2rem;
+        height: 2rem;
+
+    }
+
+    body {
+        margin: 0;
+    }
+
+    .main-img img {
+        border: none;
+        max-width: 100%;
+        height: auto;
+        padding: auto;
+        display: block;
+        margin: auto;
+    }
+
+    .list img {
+        border: none;
+        max-width: 100%;
+        height: auto;
+        padding: auto;
+        display: block;
+        margin: auto;
+    }
+
+    h1 {
+        margin-left: auto;
+    }
+
+
+    .section-white h2 {
+        text-align: center;
+        font-size: 2.4rem;
+        font-weight: normal;
+        letter-spacing: 0.1rem;
+        margin-bottom: 2em;
+        color: rgb(107, 107, 107);
+        padding: 0rem 0.1875rem;
+    }
+
+    .section-blue h2 {
+        text-align: center;
+        font-size: 2.4rem;
+        font-weight: normal;
+        letter-spacing: 0.1rem;
+        margin-bottom: 2rem;
+        color: white;
+    }
+
+    h2 {
+        margin-top: 4.375rem;
+    }
+
+    h2 span {
+        display: block;
+        font-size: 0.8rem;
+        opacity: 0.5;
+        letter-spacing: 0.5rem;
+    }
+
+    .overview {
+        width: 90%;
+        margin: auto;
+    }
+
+    .overview h3 {
+        font-size: 1.2rem;
+        font-weight: normal;
+        margin-bottom: 0.5rem;
+        border-bottom: 0.125rem solid rgb(107, 107, 107);
+    }
+
+    .overview p {
+        margin: 0;
+        line-height: 1.85rem;
+        font-size: 0.9rem;
+        margin-bottom: 2.5rem;
+    }
+
+
+    .sub-title h3 {
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: normal;
+        letter-spacing: 0.1rem;
+        margin-bottom: 2rem;
+        color: rgb(107, 107, 107);
+        padding: 0rem 0.1875rem;
+    }
+
+
+
+    .section-blue {
+        background-color: rgb(65, 65, 255);
+        padding: 0.1875rem;
+    }
+
+    .list {
+        max-width: 90%;
+        margin: auto;
+    }
+
+    h4 {
+        margin: 1rem 0rem 0rem;
+        color: white;
+    }
+
+    .text p {
+        margin: 0;
+        color: white;
+    }
+
+    .text p {
+        font-size: 0.8rem;
+    }
+
+
+    .btn-back {
+        background-color: white;
+        padding: 0.625rem;
+    }
+
+    .btn-area {
+        background-color: rgb(0, 11, 214);
+    }
+
+    /*アコーディオンタイトル*/
+    .btn {
+        margin-top: 1.1rem;
+        text-align: center;
+        color: white;
+        position: relative;
+        /*+マークの位置基準とするためrelative指定*/
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: normal;
+        padding: 3% 3%;
+        transition: all .5s ease;
+    }
+
+    /*アイコンの＋と×*/
+    .btn::before,
+    .btn::after {
+        position: absolute;
+        content: '';
+        width: 1rem;
+        height: 0.125rem;
+        background-color: white;
+
+    }
+
+    .btn::before {
+        top: 48%;
+        left: 1rem;
+        transform: rotate(0deg);
+
+    }
+
+    .btn::after {
+        top: 48%;
+        left: 1rem;
+        transform: rotate(90deg);
+
+    }
+
+    /*　closeというクラスがついたら形状変化　*/
+
+    .btn.close::before {
+        transform: rotate(45deg);
+    }
+
+    .btn.close::after {
+        transform: rotate(-45deg);
+    }
+
+    /*アコーディオンで現れるエリア*/
+    .box {
+        display: none;
+        /*はじめは非表示*/
+        margin: 3%;
+        padding: 3%;
+        /* border: 4px solid rgb(0, 11, 214); */
+
+    }
+
+
+    footer {
+        background-color: rgb(65, 65, 255);
+        padding: 1.25rem;
+        text-align: center;
+    }
+
+    /*リンクの形状*/
+    #page-top a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(65, 65, 255, 0.8);
+        border-radius: 0.3125rem;
+        width: 3.125rem;
+        height: 3.125rem;
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-size: 0.6rem;
+        transition: all 0.3s;
+    }
+
+    #page-top a:hover {
+        background: rgb(0, 11, 214);
+    }
+
+    /*リンクを右下に固定*/
+    #page-top {
+        position: fixed;
+        right: 0.625rem;
+        bottom: 0.625rem;
+        z-index: 2;
+        /*はじめは非表示*/
+        opacity: 0;
+        transform: translateY(1.66rem);
+    }
+
+    /*　上に上がる動き　*/
+
+    #page-top.UpMove {
+        animation: UpAnime 0.5s forwards;
+    }
+
+    @keyframes UpAnime {
+        from {
+            opacity: 0;
+            transform: translateY(1.66rem);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /*　下に下がる動き　*/
+
+    #page-top.DownMove {
+        animation: DownAnime 0.5s forwards;
+    }
+
+    @keyframes DownAnime {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(6.66rem);
+        }
+    }
+
+    footer small {
+        font-size: 0.6rem;
+        color: white;
+
+    }
+}

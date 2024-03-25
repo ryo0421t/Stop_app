@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+   <meta name="robots" content="noindex" />
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+   <!-- External CSSファイルのリンク -->
+   <link rel="apple-touch-icon" href="img/IMG_6459.png">
+   <link rel="manifest" href="js/manifest.json">
+   <link rel="icon" href="img/IMG_6459.png" />
+   <link rel="stylesheet" type="text/css"
+      href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
+   <link rel="stylesheet" type="text/css" href="css/map.css">
+   <title>マップ</title>
+   <!-- Google Maps APIのスクリプトのリンク -->
+   <script defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgz6CYR72Y2FFnZgDha4cwvLpziKRB7eU&callback=initMap"></script>
+   <script>
+      window.addEventListener('load', function () {
+         if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register("js/serviceWorker.js")
+               .then(function (registration) {
+                  console.log("serviceWorker registed.");
+               }).catch(function (error) {
+                  console.warn("serviceWorker error.", error);
+               });
+         }
+      });
+   </script>
+</head>
+
+<body>
+
+
+   <header>
+      <div class="flex">
+         <p>マップ</p>
+         <!-- ？ボタン -->
+         <div class="border-radius-q">
+            <a id="btn_show_popup">?</a>
+         </div>
+         <h1>
+            <!-- サイト遷移ボタン -->
+            <a href="https://it222103.web.app/src/page.html" class="border-radius img_wrap">
+               <img src="img/ホームページのアイコン.png" alt="">
+            </a>
+         </h1>
+      </div>
+
+   </header>
+
+   <!-- マップを表示するコンテナ -->
+   <div id="map_canvas"></div>
+   <!-- グローバルナビゲーション -->
+   <nav id="g-nav">
+      <div id="g-nav-list"><!--ナビの数が増えた場合縦スクロールするためのdiv※不要なら削除-->
+         <ul>
+            <td id="Intersection_Name"></td>
+            <!-- スタートボタン -->
+            <li><a href="#" id="game-start" onclick="Start()">ゲームスタート</a></li>
+            <!-- 戻るボタン -->
+            <li><a href="#" id="map-return" onclick="MapReturn()">戻る</a></li>
+         </ul>
+      </div>
+   </nav>
+
+
+   <input type="checkbox" id="popup">
+
+   <div id="overlay">
+      <label for="popup" id="bg_gray"></label>
+      <div id="window">
+         <label for="popup" id="btn_cloth">
+            <span></span>
+         </label>
+
+         <!-- モーダルウィンドウ -->
+         <div id="msg">
+            <h2>遊び方</h2>
+            <!-- <p>ポップアップの外をクリックしてもウィンドウが閉じます。</p> -->
+            <div class="over-popup">
+               <div class="wrap-width">
+                  <div class="over-margin slideshow-container">
+                     <div class="mySlides fade">
+                        <span class="bold">➀：現在待っている信号のピンを選択しよう</span><br>
+                        <p>「ゲームスタート」を押すとゲームが始まるよ</p><br>
+                        <div class="center-img">
+                           <img src="img/IMG_6469.PNG" alt="">
+                        </div>
+                     </div>
+                     <div class="mySlides fade">
+                        <span class="bold">➁：ゲームが始まると色がランダムで出題される</span><br>
+                        <p>色を探してスキャンボタンを押そう<br>
+                           この時、正確な色をスキャンできた場合は背景が[<span class="bule">青</span>」になりポイントゲット<br>
+                           正確な色をスキャンできなかった場合は背景が「<span class="red">赤</span>」になるぞ</p><br>
+                     </div>
+                     <div class="mySlides fade">
+                        <span class="bold"> ➂：ランキングに載ろう</span><br>
+                        <p>制限時間内に多くのポイント取得して１位を目指そう！（人数が多いと高得点を出せるぞ）</p><br>
+                        <div class="center-img">
+                           <img src="img/IMG_6471.PNG" alt="">
+                        </div>
+
+                     </div>
+
+                  </div>
+
+               </div>
+
+
+               <!-- 一つ戻る -->
+               <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+               <!-- 次に進む -->
+               <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+               <!-- ドット -->
+               <div class="dot-list">
+                  <span class="dot active" onclick="currentSlide(1)"></span>
+                  <span class="dot" onclick="currentSlide(2)"></span>
+                  <span class="dot" onclick="currentSlide(3)"></span>
+               </div>
+
+               <!-- ｊｓ -->
+               <script>
+                  var slideIndex = 1;
+                  showSlides(slideIndex);
+
+                  function plusSlides(n) {
+                     showSlides(slideIndex += n);
+
+                     // Remove the 'active' class from all dots
+                     var dots = document.getElementsByClassName("dot");
+                     for (var i = 0; i < dots.length; i++) {
+                        dots[i].classList.remove("active");
+                     }
+
+                     // Add the 'active' class to the current dot
+                     dots[slideIndex - 1].classList.add("active");
+                  }
+
+                  function currentSlide(n) {
+                     showSlides(slideIndex = n);
+
+                     // Remove the 'active' class from all dots
+                     var dots = document.getElementsByClassName("dot");
+                     for (var i = 0; i < dots.length; i++) {
+                        dots[i].classList.remove("active");
+                     }
+
+                     // Add the 'active' class to the current dot
+                     dots[slideIndex - 1].classList.add("active");
+                  }
+
+                  function showSlides(n) {
+                     var i;
+                     var slides = document.getElementsByClassName("mySlides");
+                     if (n > slides.length) { slideIndex = 1 }
+                     if (n < 1) { slideIndex = slides.length }
+
+                     // ボタンの表示・非表示を制御
+                     var prevButton = document.getElementsByClassName("prev")[0];
+                     var nextButton = document.getElementsByClassName("next")[0];
+
+                     if (slideIndex === 1) {
+                        prevButton.style.display = "none";
+                     } else {
+                        prevButton.style.display = "block";
+                     }
+
+                     if (slideIndex === 3) {
+                        nextButton.style.display = "none";
+                     } else {
+                        nextButton.style.display = "block";
+                     }
+
+                     for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                     }
+                     slides[slideIndex - 1].style.display = "block";
+                  }
+               </script>
+
+
+            </div>
+         </div>
+      </div>
+
+
+      <!-- ＰＣの場合に表示 -->
+      <div class="mobile-message">
+         <p>スマートフォンで<br>開いてください</p>
+      </div>
+
+      <!-- JavaScriptのコードを含む外部ファイルのリンク -->
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="js/map.js"></script>
+
+</body>
+
+</html>

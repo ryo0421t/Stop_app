@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>色あてゲーム</title>
+
+
+    <link rel="stylesheet" href="/index.b69a907b.css">
+
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-messaging.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@skyway-sdk/room/dist/skyway_room-latest.js"></script>
+</head>
+
+<body>
+    <div id="main-wrap">
+
+        <header>
+            <h1 id="total-participants">参加人数:</h1>
+        </header>
+
+        <div class="content-wrap">
+
+            <div class="top-display">
+    
+                <div id="points"><span id="pointValue">0</span>pt</div>
+    
+            </div>
+    
+            <div id="timer-display"></div>
+    
+            <div class="center">
+                <div id="color-display">
+                    <video muted="" autoplay="" playsinline="" id="video"></video>
+                </div>
+                <canvas id="canvas" style="display: none"></canvas>
+            </div>
+    
+            <p class="hint">ヒント：車、信号、道路</p>
+            <div id="iro"><span id="iroValue"></span></div>
+    
+    
+            <div class="center">
+                <a id="checkColorTypeMatch">スキャン</a>
+            </div>
+
+        </div>
+        
+
+    </div>
+
+    <script src="/index.4d6bcbeb.js" defer=""></script>
+</body>
+
+</html>

@@ -1,0 +1,460 @@
+/* スタイル定義: マップコンテナ */
+@charset "utf-8";
+
+html {
+  font-size: 16px;
+}
+
+header {
+  color: white;
+  background-color: rgb(65, 65, 255);
+  position: fixed;
+  height: 7rem;
+  width: 100%;
+  z-index: 1;
+}
+
+header p {
+  font-size: 1.6rem;
+  margin: 0;
+  font-weight: bold;
+  line-height: 4;
+}
+
+.flex {
+  display: flex;
+  max-width: 90%;
+  margin: auto;
+}
+
+
+
+/* popout */
+input {
+  display: none;
+}
+
+/* ポップアップwindow部分 */
+#overlay {
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 70;
+  width: 100%;
+  height: 100%;
+}
+
+/* オーバーレイの背景部分 */
+#bg_gray {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 80;
+}
+
+/* ウィンドウ部分 */
+#window {
+  width: 80%;
+  height: 60%;
+  padding: 1.1rem;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 0.6rem;
+  box-shadow: 0rem 0rem 1.2rem -0.37rem rgba(0, 0, 0, 0.6);
+  z-index: 90;
+  opacity: 0;
+  overflow: auto;
+
+
+  /* background-image:
+    radial-gradient(18.125rem 18.75rem, rgba(255, 0, 0, 0.2) 1.25rem, transparent 1.25rem),
+    radial-gradient(50rem 48.75rem, rgba(255, 255, 0, 0.2) 1.25rem, transparent 1.25rem),
+    radial-gradient(62.5rem 61.875rem, rgba(0, 255, 0, 0.2) 1.25rem, transparent 1.25rem),
+    radial-gradient(25rem 23.75rem, rgba(255, 255, 0, 0.2) 1.25rem, transparent 1.25rem),
+    radial-gradient(46.875rem 46.875rem, rgba(0, 255, 0, 0.2) 1.25rem, transparent 1.25rem),
+    radial-gradient(6.25rem 6.25rem, rgba(255, 0, 0, 0.2) 1.25rem, transparent 1.25rem);
+
+  background-position:
+    -18.75rem -34.375rem,
+    -12.5rem 6.25rem,
+    3.125rem 31.875rem,
+    -12.5rem -34.375rem,
+    -11.25rem -15.625rem,
+    8.125rem -9.375rem;
+  background-attachment: fixed; */
+}
+
+/* 閉じるボタン */
+#btn_cloth {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.3rem;
+  z-index: 100;
+  cursor: pointer;
+}
+
+#btn_cloth:hover {
+  opacity: 0.7;
+}
+
+#btn_cloth span,
+#btn_cloth span::before {
+  display: block;
+  height: 0.2rem;
+  width: 1.5rem;
+  border-radius: 0.2rem;
+  background: #fff;
+}
+
+#btn_cloth span {
+  transform: rotate(45deg);
+}
+
+#btn_cloth span::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  transform: rotate(-90deg);
+}
+
+
+/* クリックで表示 */
+#popup:checked~#overlay {
+  visibility: visible;
+}
+
+#popup:checked~#overlay #window {
+  animation: fadein 500ms forwards;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes fadein {
+  100% {
+    opacity: 1;
+  }
+}
+
+.wrap-width{
+  width: 96%;
+  margin: auto;
+}
+
+.over-popup {
+  margin-top: 2rem;
+  height: 12rem;
+}
+
+.over-margin {
+  margin-bottom: 1rem;
+}
+
+.over-margin p {
+  margin-top: 0.6rem;
+}
+
+
+
+.slideshow-container {
+  position: relative;
+}
+
+.fade {
+  display: none;
+  animation: fade 1s ease-out;
+}
+
+.prev, .next {
+  position: absolute;
+  width: auto;
+  top: 90%;
+  padding: 1rem;
+  margin-top: -1.375rem;
+  font-size: 1.25rem;
+  color: blue;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* .prev, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+} */
+
+.next {
+  right: 5%;
+  font-size: 1.6rem;
+}
+
+.prev {
+  left: 5%;
+  font-size: 1.6rem;
+}
+
+.dot-list {
+  position: absolute;
+  width: auto;
+  bottom: 3%; 
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+
+.dot {
+  height: 0.6rem;
+  width: 0.6rem;
+  margin: 0 0.1rem;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.dot.active:nth-child(1){
+  background-color: rgb(0, 255, 0); /* 修正: 重要度を追加 */
+}
+.dot.active:nth-child(2){
+  background-color: rgb(255, 255, 0); /* 修正: 重要度を追加 */
+}
+.dot.active:nth-child(3){
+  background-color: rgb(255, 0, 0); /* 修正: 重要度を追加 */
+}
+.center-img{
+  text-align: center;
+}
+
+.mySlides img{
+  height: 8rem;
+}
+
+
+.bule {
+  color: rgb(0, 255, 0);
+}
+
+.red {
+  color: rgb(255, 0, 0);
+}
+
+.bold {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+
+/* popout */
+
+
+
+.border-radius {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  line-height: 4rem;
+  background-color: white;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+}
+
+.border-radius-q {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  background-color: white;
+  border-radius: 50%;
+  color: rgb(65, 65, 255);
+  text-align: center;
+  margin-top: 1.8rem;
+  margin-left: 0.4rem;
+}
+
+.border-radius-q a {
+  font-weight: bold;
+}
+
+
+.img_wrap {
+  position: relative;
+}
+
+header img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2rem;
+  height: 2rem;
+
+}
+
+h1 {
+  margin-left: auto;
+  margin-top: 1.3rem;
+}
+
+
+h2 {
+  padding: 1rem 2rem;
+  color: #fff;
+  background: rgb(65, 65, 255);
+  -webkit-box-shadow: 0.31rem 0.31rem 0 rgb(65, 65, 255);
+  box-shadow: 0.31rem 0.31rem 0 rgb(0, 0, 134);
+}
+
+
+/* マップ */
+#map_canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* スタイル定義: HTMLとBody要素 */
+html,
+body {
+  height: 100%;
+  /* 高さは画面の100% */
+  margin: 0;
+  /* マージンを0に設定 */
+  padding: 0;
+  /* パディングを0に設定 */
+  height: 100svh;
+}
+
+
+/* グローバルナビゲーション */
+/*========= ナビゲーションのためのCSS ===============*/
+
+#g-nav {
+  /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+  position: fixed;
+  z-index: 70;
+  /*ナビのスタート位置と形状*/
+  bottom: -120%;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  /*ナビの高さ*/
+  background: rgb(230, 230, 230);
+  /*動き*/
+  transition: all 0.6s;
+  border-radius: 100% 100% 0 0;
+}
+
+
+/*アクティブクラスがついたら位置を0に*/
+#g-nav.panelactive {
+  bottom: 0;
+  height: 30%;
+}
+
+
+
+/*ナビゲーションの縦スクロール*/
+#g-nav.panelactive #g-nav-list {
+  /*ナビの数が増えた場合縦スクロール*/
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 30vh;
+  /*表示する高さ*/
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/*ナビゲーション*/
+#g-nav ul {
+  /*ナビゲーション天地中央揃え*/
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*リストのレイアウト設定*/
+
+#g-nav li {
+  list-style: none;
+  text-align: center;
+}
+
+#g-nav li a {
+  color: rgb(105, 105, 105);
+  text-decoration: none;
+  padding: 1.1rem;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.mobile-message {
+  display: none;
+}
+
+
+@media only screen and (min-width: 700px) {
+
+  html {
+    font-size: 30px;
+  }
+
+
+  /* マップ */
+  #map_canvas {
+    width: 100%;
+    height: 100%;
+    zoom: 1.6;
+  }
+
+}
+
+
+
+@media only screen and (min-width: 768px) {
+  /* 画面が小さい場合のスタイルをここに追加 */
+
+  /* 画面を暗くするためのオーバーレイ */
+  body::after {
+    content: "";
+    display: fixed;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 黒いオーバーレイ、必要に応じて調整してください */
+    z-index: 9999;
+  }
+
+  /* メッセージを表示するためのスタイル */
+  .mobile-message {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    /* メッセージの文字色、必要に応じて調整してください */
+    font-size: 2.5rem;
+    /* メッセージのフォントサイズ、必要に応じて調整してください */
+    font-weight: bold;
+    z-index: 10000;
+  }
+}

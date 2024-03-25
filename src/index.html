@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="robots" content="noindex" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>色あてゲーム</title>
+
+
+    <link rel="icon" href="img/IMG_6459.png" />
+    <link rel="stylesheet" href="css/game.css">
+
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-messaging.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@skyway-sdk/room/dist/skyway_room-latest.js"></script>
+</head>
+
+<body>
+    <div id="main-wrap">
+
+        <!-- ヘッダー -->
+        <header>
+            <!-- 人数表示 -->
+            <h1 id="total-participants">参加人数:</h1>
+        </header>
+
+        <div class="content-wrap">
+
+            <div class="top-display">
+
+                <!-- ポイント表示 -->
+                <div id="points"><span id="pointValue">0</span>pt</div>
+
+            </div>
+
+            <!-- タイマー表示 -->
+            <div id="timer-display"></div>
+
+            <!-- ビデオ画面 -->
+            <div class="center">
+                <div id="color-display">
+                    <div class="hidden">
+                        <video muted autoplay playsinline id="video" autoplay style="transform: scale(1);"></video>
+                    </div>
+
+                </div>
+                <!-- ビデオ拡大 -->
+                <input type="range" id="zoomControl" min="1" max="10" step="0.1" value="1">
+                <canvas id="canvas" style="display: none;"></canvas>
+
+            </div>
+
+
+            <!-- ヒント表示 -->
+            <p class="hint">ヒント：車、信号、道路</p>
+            <div id="iro"><span id="iroValue"></span></div>
+
+            <!-- スキャンボタン -->
+            <div class="center">
+                <a id="checkColorTypeMatch">スキャン</a>
+            </div>
+
+            <!-- 正解 -->
+            <div id="seikai"></div>
+            <!-- 不正解 -->
+            <div id="miss"></div>
+
+            <!-- 歩きスマホ検知 -->
+            <audio id="btn_audio_tyuui">
+                <source src="./audio/tyuui.mp3" type="audio/mp3">
+            </audio>
+
+        </div>
+
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

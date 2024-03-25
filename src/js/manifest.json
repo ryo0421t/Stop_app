@@ -1,0 +1,13 @@
+{
+    "name": "クロスキーパー",
+    "short_name": "クロスキーパー",
+    "icons": [
+        {
+            "src": "img/IMG_6459.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "https://it222103.web.app/src/map.html",
+    "display": "standalone"
+}
